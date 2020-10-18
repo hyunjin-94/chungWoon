@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script type="text/javascript" src = "./js/jquery-3.5.1.js"></script>
+<meta charset="UTF-8">
+<script type="text/javascript">
+  $(document).ready(function(){
+     $("#header").load("header.html");
+  });
+</script>
+<style>
+.divTitle{
+	font-weight: bold;
+	font-size:40px;
+	text-align:center;
+}
+</style>
+
+
+
+</head>
+<body>
+<div id="header"></div>
+<div style ="font-weight: bold;	font-size:50px;	text-align:center; color : #FF6813"> 정현진의 맛집</div>
+<p class = "divTitle">돼지랑찌개랑</p>
+<iframe src = "https://map.naver.com/v5/entry/place/16484824?c=14107871.8063020,4502474.6093167,13,0,0,0,dh&placePath=%2Fhome%3Fentry=plt" style = "width:100%;height:500px">
+</iframe>
+<p class = "divTitle">족장</p>
+<iframe src = "https://map.naver.com/v5/entry/place/37635625?c=14103869.5060891,4501648.5075536,15,0,0,0,dh&placePath=%3Fentry=plt" style = "width:100%;height:500px">
+</iframe>
+</body>
+</html>

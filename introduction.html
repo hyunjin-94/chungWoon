@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script type="text/javascript" src = "./js/jquery-3.5.1.js"></script>
+<meta charset="UTF-8">
+<script type="text/javascript">
+  $(document).ready(function(){
+     $("#header").load("header.html");
+  });
+  
+  function pdfDownload(){
+	  var doc = new jsPDF();
+	  var pdfHandlers = {
+	  	'#editor' : function (element, renderer) {
+	  	return true;
+	  	}	
+	  };
+	  html2canvas(document.getElementById("pdfDiv"), {
+		  onrendered : function(canvas) {
+	            // 한글깨짐현상때문에 jpeg->jspdf 전환
+	            var imgData = canvas.toDataURL('image/jpeg');
+	            var pageWidth = 400;
+	            var pageHeight = pageWidth * 1.414;
+	            var imgWidth = pageWidth - 20;
+	            var imgHeight = $('#pdfDiv').height() * imgWidth / $('#pdfDiv').width();
+	            var doc = new jsPDF('p','mm',[pageHeight, pageWidth]);
+	            doc.addImage(imgData, 'JPEG', 10, 10, imgWidth, imgHeight);
+	            doc.save('정현진의소개서.pdf');
+	        }
+  });
+  }
+</script>
+<style>
+.divTitle{
+	font-weight: bold;
+	font-size:40px;
+	text-align:center;
+}
+.title{
+	background-color : #999999;
+	font-weight: bold;
+	color : white;
+}
+
+.table{
+	width:60%;
+	margin:auto;
+	text-align:center;
+}
+</style>
+
+
+
+</head>
+<body>
+<div id="header"></div>
+<button id = "pdfDownload" type = "button" onClick = "pdfDownload()" style = "background-color:red; font-weight: bold">PDF 다운로드</button>
+<div id = "pdfDiv" style = "background-color:white">
+<div style ="font-weight: bold;	font-size:50px;	text-align:center; color : #FF6813"> 정현진의 소개서</div>
+<p class = "divTitle">기본정보</p>
+<table border = 1 class = "table">
+	<tbody>
+		<tr>
+		<td rowspan="3" style = "width:10%">
+			<img src = "./img/photo.png" style = "width:100%">
+		</td>
+		<td class = "title">
+		이름
+		</td>
+		<td>
+		정현진
+		</td>
+		<td  class = "title">
+		생년월일
+		</td>
+		<td>
+		1994.12.07
+		</td>
+		<td  class = "title">
+		성별
+		</td>
+		<td>
+		남자
+		</td>
+		</tr>
+		<tr>
+		<td class = "title">
+		휴대폰번호
+		</td>
+		<td>
+		010-4764-0554
+		</td>
+		<td class = "title">
+		이메일
+		</td>
+		<td colspan="3">
+		c0ronaldo@naver.com
+		</td>
+		</tr>
+		<tr>
+		<td class = "title">
+		주소
+		</td>
+		<td colspan="5">
+		인천광역시 남구 도화2.3동
+		</td>
+		</tr>
+	</tbody>
+</table>
+<p class = "divTitle">고등학교</p>
+<table border = 1 class = "table">
+	<tbody>
+		<tr>
+		<td class = "title">
+		기간
+		</td>
+		<td colspan="3">
+		2010.03 ~ 2013.02
+		</td>
+		</tr>
+		<tr>
+		<td  class = "title">
+		학교명
+		</td>
+		<td>
+		현대예능고등학교
+		</td>
+		<td  class = "title">
+		분류
+		</td>
+		<td>
+		예체능
+		</td>
+		</tr>
+	</tbody>
+</table>
+<p class = "divTitle">전문대학</p>
+<table border = 1 class = "table">
+	<tbody>
+		<tr>
+		<td class = "title">
+		기간
+		</td>
+		<td colspan="3">
+		2016.03 ~ 2018.02
+		</td>
+		</tr>
+		<tr>
+		<td class = "title">
+		학교명
+		</td>
+		<td>
+		신안산대학
+		</td>
+		<td class = "title">
+		분류
+		</td>
+		<td>
+		2년제
+		</td>
+		</tr>
+		<tr>
+		<td class = "title">
+		주전공
+		</td>
+		<td>
+		컴퓨터 정보과
+		</td>
+		<td class = "title">
+		학점
+		</td>
+		<td>
+		3.5 / 4.5
+		</td>
+		</tr>
+	</tbody>
+</table>
+<p class = "divTitle">대학교</p>
+<table border = 1 class = "table">
+	<tbody>
+		<tr>
+		<td class = "title">
+		기간
+		</td>
+		<td colspan="3">
+		2019.03 ~ 2021.02
+		</td>
+		</tr>
+		<tr>
+		<td class = "title">
+		학교명
+		</td>
+		<td>
+		청운대학교
+		</td>
+		<td class = "title">
+		분류
+		</td>
+		<td>
+		4년제
+		</td>
+		</tr>
+		<tr>
+		<td class = "title">
+		주전공
+		</td>
+		<td>
+		컴퓨터공학
+		</td>
+		<td class = "title">
+		학점
+		</td>
+		<td>
+		3.5 / 4.5
+		</td>
+		</tr>
+	</tbody>
+</table>
+<p class = "divTitle">수상경력</p>
+<table border = 1 class = "table">
+	<tbody>
+		<tr>
+		<td class = "title">
+		수상명
+		</td>
+		<td>
+		축구(엘리트) 경기북부주말리그 3위
+		</td>
+		<td class = "title">
+		수상내용
+		</td>
+		<td>
+		축구(엘리트) U-18(고등학교) 경기북부주말리그 3위
+		</td>
+		</tr>
+		<tr>
+		<td class = "title">
+		수여기관
+		</td>
+		<td>
+		대한축구협회(KFA)
+		</td>
+		<td class = "title">
+		수상년도
+		</td>
+		<td>
+		2011년
+		</td>
+		</tr>
+	</tbody>
+</table>
+<p class = "divTitle">수상경력</p>
+<table border = 1 class = "table">
+	<tbody>
+		<tr>
+		<td class = "title">
+		수상명
+		</td>
+		<td>
+		축구(엘리트) 경기도지사대회 준우승
+		</td>
+		<td class = "title">
+		수상내용
+		</td>
+		<td>
+		축구(엘리트) U-18(고등학교) 경기도지사대회 준우승
+		</td>
+		</tr>
+		<tr>
+		<td class = "title">
+		수여기관
+		</td>
+		<td>
+		경기도축구협회
+		</td>
+		<td class = "title">
+		수상년도
+		</td>
+		<td>
+		2011년
+		</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</body>
+</html>
